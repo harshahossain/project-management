@@ -50,13 +50,31 @@ function App() {
       };
     });
   }
+  //
+  //handling project deletion in selected project
+  //
+  function handleDeleteProject() {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectID: undefined,
+        projects: prevState.projects.filter((project) => {
+          project.id !== prevState.selectedProjectID;
+        }),
+      };
+    });
+  }
   //console.log(projectState);
   //
-  //
+
   const selectedProject = projectState.projects.find(
     (project) => project.id === projectState.selectedProjectID
   );
-  let content = <SelectedProject project={selectedProject} />;
+  //
+  //
+  let content = (
+    <SelectedProject project={selectedProject} onDelete={handleDeleteProject} />
+  );
   if (projectState.selectedProjectID === null) {
     content = (
       <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject} />
