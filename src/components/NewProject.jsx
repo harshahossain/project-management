@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Input from "./Input.jsx";
 import Modal from "./Modal.jsx";
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   //we could also do textarea={true}
   const modal = useRef();
   //
@@ -40,14 +40,21 @@ export default function NewProject({ onAdd }) {
   return (
     <>
       <Modal ref={modal} buttonCaption="Close">
-        <h2>Invalid Input</h2>
-        <p>Oops.. looks like you did not enter everything needed.</p>
-        <p>Please make sure to provide valid value for every input.</p>
+        <h2 className="text-xl font-bold text-stone-700 my-4">Invalid Input</h2>
+        <p className="text-stone-800 mb-4">
+          Oops.. looks like you did not enter everything needed.
+        </p>
+        <p className="text-stone-800 mb-4">
+          Please make sure to provide valid value for every input.
+        </p>
       </Modal>
       <div className="w-[35rem] mt-16">
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-stone-700 hover:text-stone-900">
+            <button
+              onClick={onCancel}
+              className="text-stone-700 hover:text-stone-900"
+            >
               Cancel
             </button>
           </li>
