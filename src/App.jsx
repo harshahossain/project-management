@@ -119,7 +119,14 @@ function App() {
   }
   //
   //task deletion
-  function handleDeleteTask() {}
+  function handleDeleteTask(id) {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  }
   //
   return (
     <main className="h-screen my-8 flex gap-8">

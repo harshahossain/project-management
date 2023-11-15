@@ -16,7 +16,10 @@ export default function Tasks({ tasks, onAdd, onDelete }) {
             // wasnt working before because i put second bracket after ((task)=>'{' but it shouldhave been '(' instead since I GUESS { wasnt forcing a return statement but ( did ?
             <li key={task.id} className="flex justify-between my-4">
               <span>{task.text}</span>
-              <button className="text-stone-700 hover:text-red-700">
+              <button
+                className="text-stone-700 hover:text-red-700"
+                onClick={() => onDelete(task.id)}
+              >
                 Clear
               </button>
             </li>
