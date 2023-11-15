@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 export default function NewTask({ onAdd }) {
-  const [enteredTask, setEnteredTask] = useState();
+  const [enteredTask, setEnteredTask] = useState("");
 
   function handleChange(evt) {
-    setEnteredTask(evt.target.value);
+    // console.log(evt.target.value); it passes
+    setEnteredTask(evt.target.value); //the state change problem uncontrollable input?
+    //cause usetate er por "" deinai
   }
   function handleClick() {
     onAdd(enteredTask);

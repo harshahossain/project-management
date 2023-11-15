@@ -102,10 +102,6 @@ function App() {
   //
   //handling Task inside project
   function handleAddTask(text) {
-    // const newTask = {
-    //   text:text,
-    //   id: uuidv4(),
-    // };
     const taskId = uuidv4();
 
     setProjectState((prevState) => {
@@ -119,6 +115,7 @@ function App() {
         tasks: [...prevState.tasks, newTask],
       };
     });
+    // console.log(projectState.tasks);
   }
   //
   //task deletion

@@ -12,14 +12,15 @@ export default function Tasks({ tasks, onAdd, onDelete }) {
       )}
       {tasks.length > 0 && (
         <ul className="p-4 mt-8 rounded-md bg-stone-100">
-          {tasks.map((task) => {
-            <li key={tasks.id} className="flex justify-between my-4">
-              <span>{tasks.text}</span>
+          {tasks.map((task) => (
+            // wasnt working before because i put second bracket after ((task)=>'{' but it shouldhave been '(' instead since I GUESS { wasnt forcing a return statement but ( did ?
+            <li key={task.id} className="flex justify-between my-4">
+              <span>{task.text}</span>
               <button className="text-stone-700 hover:text-red-700">
                 Clear
               </button>
-            </li>;
-          })}
+            </li>
+          ))}
         </ul>
       )}
     </section>
