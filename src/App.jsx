@@ -9,6 +9,7 @@ function App() {
   const [projectState, setProjectState] = useState({
     selectedProjectID: undefined,
     projects: [],
+    tasks: [],
   });
 
   function handleStartAddProject() {
@@ -73,7 +74,13 @@ function App() {
   //
   //
   let content = (
-    <SelectedProject project={selectedProject} onDelete={handleDeleteProject} />
+    <SelectedProject
+      project={selectedProject}
+      onDelete={handleDeleteProject}
+      onAddTask={handleAddTask}
+      onDeleteTask={handleDeleteTask}
+      tasks={projectState.tasks}
+    />
   );
   if (projectState.selectedProjectID === null) {
     content = (
@@ -92,6 +99,30 @@ function App() {
       };
     });
   }
+  //
+  //handling Task inside project
+  function handleAddTask(text) {
+    // const newTask = {
+    //   text:text,
+    //   id: uuidv4(),
+    // };
+    const taskId = uuidv4();
+
+    setProjectState((prevState) => {
+      const newTask = {
+        text: text,
+        id: taskId,
+        projectId: prevState.selectedProjectID,
+      };
+      return {
+        ...prevState,
+        tasks: [...prevState.tasks, newTask],
+      };
+    });
+  }
+  //
+  //task deletion
+  function handleDeleteTask() {}
   //
   return (
     <main className="h-screen my-8 flex gap-8">
