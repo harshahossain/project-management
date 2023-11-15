@@ -12,6 +12,7 @@ export default function NewTask({ onAdd }) {
   function handleClick() {
     if (enteredTask.trim().length === 0 || enteredTask.trim().length < 3) {
       setErrMsg("Task Cannot Be Empty & Must Be At Least 3 Charecters!!");
+      return;
     } else {
       onAdd(enteredTask.trim());
       setEnteredTask("");
